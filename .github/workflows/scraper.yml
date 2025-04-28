@@ -25,4 +25,4 @@ jobs:
         env: 
           URL: ${{ secrets.URL }}
           TEAM_NAME: ${{ secrets.TEAM_NAME }}
-        run: python create_json.py
+        run: python scrape_schedule.py
