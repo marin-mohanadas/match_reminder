@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
@@ -19,7 +20,7 @@ def fetch_schedule(url, team_name):
         raise Exception("Failed to fetch page")
 
     soup = BeautifulSoup(response.text, 'html.parser')
-    table = soup.find('table', class_='table')  # You might need to adjust this selector
+    table = soup.find('table', class_='table')
     rows = table.find_all('tr')[1:]  # Skip the header
 
     tasks = []
@@ -27,6 +28,11 @@ def fetch_schedule(url, team_name):
     for row in rows:
         cols = [col.get_text(strip=True) for col in row.find_all('td')]
         if not cols or len(cols) < 5:
+            continue
+
+        # Skip past matches
+        match_date = datetime.strptime(cols[2], "%m/%d/%Y").date()
+        if match_date < datetime.today().date():
             continue
 
         task = {
