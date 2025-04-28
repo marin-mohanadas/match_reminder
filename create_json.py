@@ -1,10 +1,11 @@
-import re
+import json
 import os
+import re
+
 import requests
 from bs4 import BeautifulSoup
-import json
-
 from dotenv import load_dotenv
+
 load_dotenv()
 
 # Load secrets
@@ -46,4 +47,3 @@ if __name__ == "__main__":
     with open('schedule_tasks.json', 'w') as f:
         json.dump(schedule_tasks, f, indent=2)
     print("Tasks saved to schedule_tasks.json")
-
