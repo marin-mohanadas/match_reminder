@@ -23,6 +23,6 @@ jobs:
 
       - name: Run scraper
         env: 
-          URL: ${{ URL }}
-          TEAM_NAME: ${{ TEAM_NAME }}
+          URL: ${{ secrets.URL }}
+          TEAM_NAME: ${{ secrets.TEAM_NAME }}
         run: python create_json.py
