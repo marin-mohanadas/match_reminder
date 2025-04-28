@@ -19,10 +19,10 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4
+        run: pip install requests beautifulsoup4 python-dotenv
 
       - name: Run scraper
         env: 
-          URL: ${{ URL }}
-          TEAM_NAME: ${{ TEAM_NAME }}
-        run: python scrape_schedule.py
+          URL: ${{ secrets.URL }}
+          TEAM_NAME: ${{ secrets.TEAM_NAME }}
+        run: python create_json.py
