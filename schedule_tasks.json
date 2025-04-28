@@ -1,0 +1,79 @@
+[
+  {
+    "match_no": "1",
+    "date": "05/03/2025",
+    "time": "10:00 AM",
+    "venue": "PHX-Center Pitch # 1",
+    "opponent": "Jalsa CC"
+  },
+  {
+    "match_no": "2",
+    "date": "05/11/2025",
+    "time": "10:00 AM",
+    "venue": "Boot Road",
+    "opponent": "Sentinels"
+  },
+  {
+    "match_no": "3",
+    "date": "05/18/2025",
+    "time": "7:30 AM",
+    "venue": "Boot Road",
+    "opponent": "Lethal Lansdale"
+  },
+  {
+    "match_no": "4",
+    "date": "06/01/2025",
+    "time": "7:30 AM",
+    "venue": "PHX-Center Pitch # 1",
+    "opponent": "Royal Cheetahs"
+  },
+  {
+    "match_no": "5",
+    "date": "06/08/2025",
+    "time": "6:15 PM",
+    "venue": "PHX-Center Pitch # 1",
+    "opponent": "Super Strikers"
+  },
+  {
+    "match_no": "6",
+    "date": "06/14/2025",
+    "time": "10:00 AM",
+    "venue": "Wilson Farm",
+    "opponent": "KOP Mustangs"
+  },
+  {
+    "match_no": "7",
+    "date": "06/22/2025",
+    "time": "12:45 PM",
+    "venue": "PHX-Center Pitch # 1",
+    "opponent": "Steel Balls"
+  },
+  {
+    "match_no": "8",
+    "date": "06/28/2025",
+    "time": "10:00 AM",
+    "venue": "Boot Road",
+    "opponent": "Raptors"
+  },
+  {
+    "match_no": "9",
+    "date": "07/12/2025",
+    "time": "7:30 AM",
+    "venue": "PHX-Center Pitch # 1",
+    "opponent": "Eagles"
+  },
+  {
+    "match_no": "10",
+    "date": "07/20/2025",
+    "time": "12:45 PM",
+    "venue": "PHX-Center Pitch # 1",
+    "opponent": "Masters Cricket Club"
+  },
+  {
+    "match_no": "11",
+    "date": "07/27/2025",
+    "time": "10:30 AM",
+    "venue": "PHX- Pitch 2",
+    "opponent": "Philly Chargers"
+  }
+]
