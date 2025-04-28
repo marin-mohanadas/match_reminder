@@ -22,4 +22,7 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: Run scraper
+        env: 
+          URL: ${{ URL }}
+          TEAM_NAME: ${{ TEAM_NAME }}
         run: python create_json.py
