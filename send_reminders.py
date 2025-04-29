@@ -4,12 +4,15 @@ from datetime import datetime, timedelta
 
 from twilio.rest import Client
 
-import config
+from config import get_twilio_sid, get_twilio_token, get_twilio_from, get_twilio_to
 
-ACCOUNT_SID = config.TWILIO_SID
-AUTH_TOKEN = config.TWILIO_AUTH_TOKEN
-FROM_NUMBER = config.TWILIO_FROM_NUMBER
-TO_NUMBER = config.TWILIO_TO_NUMBER
+ACCOUNT_SID = get_twilio_sid()
+AUTH_TOKEN = get_twilio_token()
+FROM_NUMBER = get_twilio_from()
+TO_NUMBER = get_twilio_to()
+
+if not all([ACCOUNT_SID, AUTH_TOKEN, FROM_NUMBER, TO_NUMBER]):
+    raise Exception("Twilio credentials missing")
 
 # Load match schedule. Use absolute path
 script_dir = os.path.dirname(os.path.abspath(__file__))

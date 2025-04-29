@@ -5,10 +5,13 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
-import config
+from config import get_url, get_team_name
 
-URL = config.URL
-TEAM_NAME = config.TEAM_NAME
+URL = get_url()
+TEAM_NAME = get_team_name()
+
+if not URL or not TEAM_NAME:
+    raise Exception("Missing URL or TEAM_NAME")
 
 
 def fetch_schedule(url, team_name):
