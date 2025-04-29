@@ -21,8 +21,10 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4 python-dotenv
 
+      - name: Create .env from secrets
+        run: |
+          echo "URL=${{ secrets.URL }}" >> .env
+          echo "TEAM_NAME=${{ secrets.TEAM_NAME }}" >> .env
+
       - name: Run scraper
-        env: 
-          URL: ${{ secrets.URL }}
-          TEAM_NAME: ${{ secrets.TEAM_NAME }}
         run: python scrape_schedule.py
