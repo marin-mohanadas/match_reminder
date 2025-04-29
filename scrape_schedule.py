@@ -1,37 +1,39 @@
 import json
-import os
 import re
 from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
-from dotenv import load_dotenv
 
-load_dotenv()
+import config
 
-# Load secrets
-URL = os.environ["URL"]
-TEAM_NAME = os.environ["TEAM_NAME"]
+URL = config.URL
+TEAM_NAME = config.TEAM_NAME
 
 
 def fetch_schedule(url, team_name):
     response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception("Failed to fetch page")
+    response.raise_for_status()
 
     soup = BeautifulSoup(response.text, 'html.parser')
     table = soup.find('table', class_='table')
-    rows = table.find_all('tr')[1:]  # Skip the header
+    if table is None:
+        raise Exception("Could not find schedule table on page")
 
+    rows = table.find_all('tr')[1:]  # Skip the header
     tasks = []
 
     for row in rows:
         cols = [col.get_text(strip=True) for col in row.find_all('td')]
-        if not cols or len(cols) < 5:
+        if not cols or len(cols) < 7:
+            continue
+
+        try:
+            match_date = datetime.strptime(cols[2], "%m/%d/%Y").date()
+        except ValueError:
             continue
 
         # Skip past matches
-        match_date = datetime.strptime(cols[2], "%m/%d/%Y").date()
         if match_date < datetime.today().date():
             continue
 
