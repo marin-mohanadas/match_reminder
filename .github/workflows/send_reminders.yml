@@ -1,0 +1,30 @@
+name: Send WhatsApp Match Reminders
+
+on:
+  schedule:
+    - cron: '0 17 * * 3'  # Wednesday 12:00 PM EST
+  workflow_dispatch:
+
+jobs:
+  send_reminders:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Twilio
+        run: pip install twilio python-dotenv
+
+      - name: Send reminders
+        env:
+          TWILIO_SID: ${{ secrets.TWILIO_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+          TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
+        run: python send_reminders.py
